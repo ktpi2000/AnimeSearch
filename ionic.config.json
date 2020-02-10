@@ -1,5 +1,7 @@
 {
   "name": "AnimeSearch",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
