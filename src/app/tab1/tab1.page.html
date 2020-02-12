@@ -6,8 +6,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>2020/1</h1>
+<ion-content fullscreen>
+  <ion-item>
+    <ion-label>Year</ion-label>
+    <ion-select interface="popover" [(ngModel)]="year" (ionChange)="Change(year, season)">
+      <ion-select-option value="2020">2020</ion-select-option>
+      <ion-select-option value="2019">2019</ion-select-option>
+      <ion-select-option value="2018">2018</ion-select-option>
+      <ion-select-option value="2017">2017</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Season</ion-label>
+    <ion-select interface="popover" [(ngModel)]="season" (ionChange)="Change(year, season)">
+      <ion-select-option value="1">Spring</ion-select-option>
+      <ion-select-option value="2">Summer</ion-select-option>
+      <ion-select-option value="3">Fall</ion-select-option>
+      <ion-select-option value="4">Winter</ion-select-option>
+    </ion-select>
+  </ion-item>
+
   <ion-card *ngFor="let p of posts">
     <ion-card-header>
       <ion-card-title>{{p.title}}</ion-card-title>

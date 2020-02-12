@@ -7,23 +7,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  /*
-  posts: {
-    title: string;
-    public_url: string;
-    twitter_account: string;
-  }[] = [];
-  */
   posts: any;
+  url: string = "https://api.moemoe.tokyo/anime/v1/master/"
 
   constructor(
     public http: HttpClient,
   ) { }
 
   ionViewDidEnter() {
-    this.http.get('https://api.moemoe.tokyo/anime/v1/master/2020/1')
+    this.http.get(this.url + "2020/1")
       .subscribe(data => {
-        this.posts = data
+        this.posts = data;
+      });
+  }
+
+  Change(year, season) {
+    console.log("year: " + year + ", season: " + season);
+
+    this.http.get(this.url + year + "/" + season)
+      .subscribe(data => {
+        this.posts = data;
       });
   }
 }
