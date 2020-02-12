@@ -22,6 +22,15 @@ export class Tab1Page {
   }
 
   Change(year, season) {
+    //とりあえず解決
+    if (typeof year === 'undefined') {
+      year = 2020;
+    }
+
+    if (typeof season === 'undefined') {
+      season = 1;
+    }
+
     console.log("year: " + year + ", season: " + season);
 
     this.http.get(this.url + year + "/" + season)
