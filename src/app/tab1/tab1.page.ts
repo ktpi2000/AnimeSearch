@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -12,6 +13,7 @@ export class Tab1Page {
 
   constructor(
     public http: HttpClient,
+    public actionSheetController: ActionSheetController,
   ) { }
 
   ionViewDidEnter() {
@@ -37,5 +39,37 @@ export class Tab1Page {
       .subscribe(data => {
         this.posts = data;
       });
+  }
+
+  async onClick(p) {
+    console.log(p.id, p.public_url);
+
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Menu',
+      buttons: [
+        {
+          text: 'Like',
+          icon: 'heart',
+          handler: () => {
+            console.log("Like");
+          }
+        },
+        {
+          text: 'Jump Link',
+          icon: 'share-alt',
+          handler: () => {
+            console.log("Jump Link");
+          }
+        },
+        {
+          text: 'Cancel',
+          icon: 'close',
+          handler: () => {
+            console.log("close");
+          }
+        }
+      ]
+    });
+    await actionSheet.present();
   }
 }
